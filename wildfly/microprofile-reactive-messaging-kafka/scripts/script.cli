@@ -1,0 +1,8 @@
+# Kafka DS
+/subsystem=datasources/data-source=KafkaExampleDS:add(jndi-name="java:jboss/datasources/KafkaExampleDS", driver-name=h2, user-name=sa, password=sa, connection-url="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE", enabled=true, use-java-context=true)
+
+#SSL
+# When the keystore file doesn't exist (will exist in the POD), we need to set required=false and type attributes.
+/subsystem=elytron/key-store=kafka-ssl-test:add(path="${env.KEYSTORE_PATH:/etc/secrets/ca.p12.WONT-WORK}", required=false, type=PKCS12, credential-reference={clear-text=${env.KEYSTORE_PASSWORD:wont-work}})
+/subsystem=elytron/trust-manager=kafka-ssl-test:add(key-store=kafka-ssl-test)
+/subsystem=elytron/client-ssl-context=kafka-ssl-test:add(trust-manager=kafka-ssl-test)
