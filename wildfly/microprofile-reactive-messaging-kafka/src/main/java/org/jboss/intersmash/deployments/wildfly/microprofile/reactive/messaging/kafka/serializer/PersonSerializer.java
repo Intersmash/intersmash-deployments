@@ -27,11 +27,11 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.apache.kafka.common.serialization.Serializer;
 
 /**
- * Taken from WildFly testsuite, see org.wildfly.test.integration.microprofile.reactive.messaging.kafka.serializer.PersonSerializer.
+ * Taken from WildFly testsuite, see
+ * org.wildfly.test.integration.microprofile.reactive.messaging.kafka.serializer.PersonSerializer.
  *
  * @author <a href="mailto:kabir.khan@jboss.com">Kabir Khan</a>
  */

@@ -22,12 +22,12 @@
 
 package org.jboss.intersmash.deployments.wildfly.microprofile.reactive.messaging.kafka.metadata;
 
+import io.smallrye.reactive.messaging.kafka.api.IncomingKafkaRecordMetadata;
 import jakarta.inject.Inject;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -35,11 +35,8 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.apache.kafka.common.header.Header;
 import org.apache.kafka.common.header.Headers;
-
-import io.smallrye.reactive.messaging.kafka.api.IncomingKafkaRecordMetadata;
 
 /**
  * Test servlet which can be used to invoke common JMS tasks in test classes.
@@ -75,17 +72,17 @@ public class MetadataTestServlet extends HttpServlet {
 				for (int i = 1; i <= 2; i++) {
 					IncomingKafkaRecordMetadata metadata = map2.get(i);
 					if (metadata != null) {
-						pw.println("Map 2, data '" + i + "', topic '" + metadata.getTopic() + "', key '" + metadata.getKey()
-								+ "', header '" + headersToString(metadata.getHeaders()) + "', timestamp '"
-								+ metadata.getTimestamp() + "'");
+						pw.println("Map 2, data '" + i + "', topic '" + metadata.getTopic() + "', key '"
+								+ metadata.getKey() + "', header '" + headersToString(metadata.getHeaders())
+								+ "', timestamp '" + metadata.getTimestamp() + "'");
 					}
 				}
 				for (int i = 3; i <= 4; i++) {
 					IncomingKafkaRecordMetadata metadata = map3.get(i);
 					if (metadata != null) {
-						pw.println("Map 3, data '" + i + "', topic '" + metadata.getTopic() + "', key '" + metadata.getKey()
-								+ "', header '" + headersToString(metadata.getHeaders()) + "', timestamp '"
-								+ metadata.getTimestamp() + "'");
+						pw.println("Map 3, data '" + i + "', topic '" + metadata.getTopic() + "', key '"
+								+ metadata.getKey() + "', header '" + headersToString(metadata.getHeaders())
+								+ "', timestamp '" + metadata.getTimestamp() + "'");
 					}
 				}
 			} else {

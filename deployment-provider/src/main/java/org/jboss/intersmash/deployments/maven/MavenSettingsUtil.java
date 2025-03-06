@@ -15,6 +15,9 @@
  */
 package org.jboss.intersmash.deployments.maven;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.maven.settings.Settings;
 import org.apache.maven.settings.building.DefaultSettingsBuilderFactory;
 import org.apache.maven.settings.building.DefaultSettingsBuildingRequest;
@@ -24,10 +27,6 @@ import org.apache.maven.settings.building.SettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuildingResult;
 import org.eclipse.aether.repository.LocalRepository;
 import org.eclipse.aether.repository.RemoteRepository;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Maven utilities APIs, see e.g.:
@@ -85,11 +84,12 @@ public class MavenSettingsUtil {
 	public static List<RemoteRepository> getRemoteRepositories(Settings settings) {
 		List<RemoteRepository> list = new ArrayList<>();
 		if (settings.getLocalRepository() != null) {
-			list.add(new RemoteRepository.Builder("localRepoFromSettings", "default", "file:" + settings.getLocalRepository())
-					.build());
+			list.add(new RemoteRepository.Builder("localRepoFromSettings", "default",
+					"file:" + settings.getLocalRepository()).build());
 		} else {
-			list.add(new RemoteRepository.Builder("localRepoFromSettings", "default", "file:" + DEFAULT_REPOSITORY_LOCAL)
-					.build());
+			list.add(
+					new RemoteRepository.Builder("localRepoFromSettings", "default", "file:" + DEFAULT_REPOSITORY_LOCAL)
+							.build());
 		}
 		if (System.getProperty("localRepository") != null) {
 			list.add(new RemoteRepository.Builder("localRepoFromSettings", "default",

@@ -22,8 +22,10 @@
 
 package org.jboss.intersmash.deployments.wildfly.microprofile.reactive.messaging.kafka.metadata;
 
+import io.smallrye.reactive.messaging.kafka.api.IncomingKafkaRecordMetadata;
+import io.smallrye.reactive.messaging.kafka.api.KafkaMetadataUtil;
+import io.smallrye.reactive.messaging.kafka.api.OutgoingKafkaRecordMetadata;
 import jakarta.enterprise.context.ApplicationScoped;
-
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -32,7 +34,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.CountDownLatch;
-
 import org.apache.kafka.common.header.internals.RecordHeader;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Message;
@@ -40,18 +41,16 @@ import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import org.eclipse.microprofile.reactive.streams.operators.ReactiveStreams;
 import org.reactivestreams.Publisher;
 
-import io.smallrye.reactive.messaging.kafka.api.IncomingKafkaRecordMetadata;
-import io.smallrye.reactive.messaging.kafka.api.KafkaMetadataUtil;
-import io.smallrye.reactive.messaging.kafka.api.OutgoingKafkaRecordMetadata;
-
 /**
  * Taken from WildFly testsuite, see
  * org.wildfly.test.integration.microprofile.reactive.messaging.kafka.api.BasicMetadataBean
  * and other beans there too.
  * <p/>
- * This generates some data and sends them to an AMQ-Stream instance to 'testing' topic via 'serializer-to-kafka'
- * outgoing interface. At the same time it reads from AMQ-Streams instance from 'testing' topic via
- * 'serializer-from-kafka' incoming interface (see 'microprofile-config.properties' for more context).
+ * This generates some data and sends them to an AMQ-Stream instance to
+ * 'testing' topic via 'serializer-to-kafka' outgoing interface. At the same
+ * time it reads from AMQ-Streams instance from 'testing' topic via
+ * 'serializer-from-kafka' incoming interface (see
+ * 'microprofile-config.properties' for more context).
  *
  * @author <a href="mailto:kabir.khan@jboss.com">Kabir Khan</a>
  */
@@ -89,14 +88,14 @@ public class BasicMetadataBean {
 		Message<Integer> msg = Message.of(i);
 
 		OutgoingKafkaRecordMetadata.OutgoingKafkaRecordMetadataBuilder<String> mb = OutgoingKafkaRecordMetadata
-				.<String> builder();
+				.<String>builder();
 		if (i % 2 == 0) {
 			// Only set the key for half the messages
 			mb.withKey("KEY-" + i);
 		}
 		if (i % 2 != 0) {
 			// Set some headers and timestamp for half the messages
-			mb.withHeaders(Collections.singletonList(new RecordHeader("header-" + i, new byte[] { 0, 1, 2 })));
+			mb.withHeaders(Collections.singletonList(new RecordHeader("header-" + i, new byte[]{0, 1, 2})));
 			mb.withTimestamp(timestamp);
 		}
 		if (i >= 3) {

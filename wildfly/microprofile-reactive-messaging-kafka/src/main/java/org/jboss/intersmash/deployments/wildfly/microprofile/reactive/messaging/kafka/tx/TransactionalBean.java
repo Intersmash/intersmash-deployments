@@ -27,13 +27,13 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
-
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Taken from WildFly testsuite, see org.wildfly.test.integration.microprofile.reactive.messaging.kafka.tx.TransactionalBean.
+ * Taken from WildFly testsuite, see
+ * org.wildfly.test.integration.microprofile.reactive.messaging.kafka.tx.TransactionalBean.
  */
 @ApplicationScoped
 public class TransactionalBean {

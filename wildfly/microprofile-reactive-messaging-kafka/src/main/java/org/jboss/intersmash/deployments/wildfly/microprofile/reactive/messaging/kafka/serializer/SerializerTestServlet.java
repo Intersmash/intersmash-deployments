@@ -27,7 +27,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -63,15 +62,18 @@ public class SerializerTestServlet extends HttpServlet {
 			if (bean.getLatch().await(TIMEOUT, TimeUnit.MILLISECONDS)) {
 				List<Person> list = bean.getReceived();
 
-				// Let's print basic data for check that serialization -> deserialization went just fine.
+				// Let's print basic data for check that serialization -> deserialization went
+				// just fine.
 				for (int i = 0; i < list.size(); i++) {
-					pw.println(i + ". Name: " + list.get(i).getName() + "; Age: " + list.get(i).getAge() + "; Data-Partition: "
-							+ bean.getPartitionReceived().get(i));
+					pw.println(i + ". Name: " + list.get(i).getName() + "; Age: " + list.get(i).getAge()
+							+ "; Data-Partition: " + bean.getPartitionReceived().get(i));
 				}
 
 				// Now let's also check order of the data.
-				// Kafka messages only have order per partition, so do some massaging of the data.
-				// This simply creates a map with list of persons assigned to the partitions as they were received.
+				// Kafka messages only have order per partition, so do some massaging of the
+				// data.
+				// This simply creates a map with list of persons assigned to the partitions as
+				// they were received.
 				Map<Integer, List<Person>> actualMap = new HashMap<>();
 				for (int i = 0; i < list.size(); i++) {
 					List<Person> persons = actualMap.computeIfAbsent(bean.getPartitionReceived().get(i),
@@ -95,7 +97,8 @@ public class SerializerTestServlet extends HttpServlet {
 	}
 
 	private boolean checkDataOrder(Map<Integer, List<Person>> actualMap, PrintWriter pw) {
-		String[] expectedOrder = { "Kabir", "Bob", "Roger", "Franta", "Pepa", "Karel", "Jaromir", "Vita", "Suzie", "Paja" };
+		String[] expectedOrder = {"Kabir", "Bob", "Roger", "Franta", "Pepa", "Karel", "Jaromir", "Vita", "Suzie",
+				"Paja"};
 
 		for (String item : expectedOrder) {
 			if (assertPersonNextOnAPartition(actualMap, item) == null) {

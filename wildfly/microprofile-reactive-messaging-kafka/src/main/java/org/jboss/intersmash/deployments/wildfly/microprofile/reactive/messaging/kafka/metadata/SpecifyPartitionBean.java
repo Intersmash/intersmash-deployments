@@ -22,31 +22,30 @@
 
 package org.jboss.intersmash.deployments.wildfly.microprofile.reactive.messaging.kafka.metadata;
 
+import io.smallrye.reactive.messaging.kafka.api.IncomingKafkaRecordMetadata;
+import io.smallrye.reactive.messaging.kafka.api.KafkaMetadataUtil;
+import io.smallrye.reactive.messaging.kafka.api.OutgoingKafkaRecordMetadata;
 import jakarta.enterprise.context.ApplicationScoped;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.CountDownLatch;
-
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Message;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import org.eclipse.microprofile.reactive.streams.operators.ReactiveStreams;
 import org.reactivestreams.Publisher;
 
-import io.smallrye.reactive.messaging.kafka.api.IncomingKafkaRecordMetadata;
-import io.smallrye.reactive.messaging.kafka.api.KafkaMetadataUtil;
-import io.smallrye.reactive.messaging.kafka.api.OutgoingKafkaRecordMetadata;
-
 /**
  * Taken from WildFly testsuite, see
  * org.wildfly.test.integration.microprofile.reactive.messaging.kafka.api.SpecifyPartitionBean.
  * <p/>
- * This generates some data and sends them to an AMQ-Stream instance to 'testing' topic via 'serializer-to-kafka'
- * outgoing interface. At the same time it reads from AMQ-Streams instance from 'testing' topic via
- * 'serializer-from-kafka' incoming interface (see 'microprofile-config.properties' for more context).
+ * This generates some data and sends them to an AMQ-Stream instance to
+ * 'testing' topic via 'serializer-to-kafka' outgoing interface. At the same
+ * time it reads from AMQ-Streams instance from 'testing' topic via
+ * 'serializer-from-kafka' incoming interface (see
+ * 'microprofile-config.properties' for more context).
  *
  * @author <a href="mailto:kabir.khan@jboss.com">Kabir Khan</a>
  */
@@ -94,8 +93,7 @@ public class SpecifyPartitionBean {
 		Message<Integer> msg = Message.of(i);
 
 		OutgoingKafkaRecordMetadata.OutgoingKafkaRecordMetadataBuilder<String> mb = OutgoingKafkaRecordMetadata
-				.<String> builder()
-				.withKey("KEY-" + i);
+				.<String>builder().withKey("KEY-" + i);
 
 		if (i > 10) {
 			mb.withPartition(1);
@@ -129,8 +127,7 @@ public class SpecifyPartitionBean {
 		Message<Integer> msg = Message.of(i);
 
 		OutgoingKafkaRecordMetadata.OutgoingKafkaRecordMetadataBuilder<String> mb = OutgoingKafkaRecordMetadata
-				.<String> builder()
-				.withKey("KEY-" + i);
+				.<String>builder().withKey("KEY-" + i);
 		if (i > 10) {
 			mb.withPartition(0);
 		}

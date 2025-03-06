@@ -15,6 +15,7 @@
  */
 package org.jboss.intersmash.deployments.maven;
 
+import java.io.File;
 import org.apache.maven.repository.internal.MavenRepositorySystemUtils;
 import org.apache.maven.settings.building.SettingsBuildingException;
 import org.eclipse.aether.DefaultRepositorySystemSession;
@@ -32,39 +33,42 @@ import org.eclipse.aether.spi.connector.RepositoryConnectorFactory;
 import org.eclipse.aether.spi.connector.transport.TransporterFactory;
 import org.eclipse.aether.transport.file.FileTransporterFactory;
 
-import java.io.File;
-
 /**
- * Class provides support to get artifact by GAV from local repo (considered as remote).
- * Local repositories:
+ * Class provides support to get artifact by GAV from local repo (considered as
+ * remote). Local repositories:
  * <ul>
- *     <li>
- *         local repository from maven settings
- *         <ul>
- *             <li>M2_HOME/conf/settings.xml as global settings</li>
- *             <li>user.home/.m2/settings.xml as local settings</li>
- *         </ul>
- *         if not available, user.home/.m2/repository is considered
- *     </li>
- *     <li>sys property localRepository if given (result from -Dmaven.repo.local)</li>
+ * <li>local repository from maven settings
+ * <ul>
+ * <li>M2_HOME/conf/settings.xml as global settings</li>
+ * <li>user.home/.m2/settings.xml as local settings</li>
+ * </ul>
+ * if not available, user.home/.m2/repository is considered</li>
+ * <li>sys property localRepository if given (result from
+ * -Dmaven.repo.local)</li>
  * </ul>
  * maven central and such repositories are not supported.
  */
 public class ArtifactProvider {
 
 	/**
-	 * @param groupId - required
-	 * @param artifactId - required
-	 * @param version - required
-	 * @param type - (jar/war/..) required
-	 * @param classifier optional - might be null
+	 * @param groupId
+	 *            - required
+	 * @param artifactId
+	 *            - required
+	 * @param version
+	 *            - required
+	 * @param type
+	 *            - (jar/war/..) required
+	 * @param classifier
+	 *            optional - might be null
 	 * @return artifact file
 	 */
-	public static File resolveArtifact(String groupId, String artifactId, String version, String type, String classifier)
-			throws SettingsBuildingException, ArtifactResolutionException {
+	public static File resolveArtifact(String groupId, String artifactId, String version, String type,
+			String classifier) throws SettingsBuildingException, ArtifactResolutionException {
 		LocalRepository localRepository = MavenSettingsUtil.getLocalRepository(MavenSettingsUtil.loadSettings());
 		RepositorySystem system = newRepositorySystem();
-		RepositorySystemSession session = newRepositorySystemSession(system, localRepository.getBasedir().getAbsolutePath());
+		RepositorySystemSession session = newRepositorySystemSession(system,
+				localRepository.getBasedir().getAbsolutePath());
 
 		Artifact artifact = new DefaultArtifact(groupId, artifactId, classifier, type, version);
 		ArtifactRequest artifactRequest = new ArtifactRequest();
@@ -90,7 +94,8 @@ public class ArtifactProvider {
 		return locator.getService(RepositorySystem.class);
 	}
 
-	public static RepositorySystemSession newRepositorySystemSession(RepositorySystem system, String localRepositoryPath) {
+	public static RepositorySystemSession newRepositorySystemSession(RepositorySystem system,
+			String localRepositoryPath) {
 		DefaultRepositorySystemSession session = MavenRepositorySystemUtils.newSession();
 
 		LocalRepository localRepo = new LocalRepository(localRepositoryPath);

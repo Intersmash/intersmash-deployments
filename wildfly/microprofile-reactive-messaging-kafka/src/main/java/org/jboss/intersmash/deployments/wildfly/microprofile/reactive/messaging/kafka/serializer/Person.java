@@ -23,7 +23,8 @@
 package org.jboss.intersmash.deployments.wildfly.microprofile.reactive.messaging.kafka.serializer;
 
 /**
- * Taken from WildFly testsuite, see org.wildfly.test.integration.microprofile.reactive.messaging.kafka.serializer.Person.
+ * Taken from WildFly testsuite, see
+ * org.wildfly.test.integration.microprofile.reactive.messaging.kafka.serializer.Person.
  *
  * @author <a href="mailto:kabir.khan@jboss.com">Kabir Khan</a>
  */

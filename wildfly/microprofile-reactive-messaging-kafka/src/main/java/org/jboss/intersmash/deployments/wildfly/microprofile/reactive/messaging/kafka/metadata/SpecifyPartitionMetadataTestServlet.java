@@ -22,20 +22,18 @@
 
 package org.jboss.intersmash.deployments.wildfly.microprofile.reactive.messaging.kafka.metadata;
 
+import io.smallrye.reactive.messaging.kafka.api.IncomingKafkaRecordMetadata;
 import jakarta.inject.Inject;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import io.smallrye.reactive.messaging.kafka.api.IncomingKafkaRecordMetadata;
 
 /**
  * Test servlet which can be used to invoke common JMS tasks in test classes.
@@ -59,8 +57,9 @@ public class SpecifyPartitionMetadataTestServlet extends HttpServlet {
 		// Let's wait until bean receives all expected data.
 		try {
 			/*
-			 * The first 10 messages are assigned the partition by the partitioner - the last 10 specify it in the metadata.
-			 * There are two sets of each - the first specifies 1 as the partition for the specified ones, the second does 2.
+			 * The first 10 messages are assigned the partition by the partitioner - the
+			 * last 10 specify it in the metadata. There are two sets of each - the first
+			 * specifies 1 as the partition for the specified ones, the second does 2.
 			 */
 			if (specifyPartitionBean.getLatch().await(TIMEOUT, TimeUnit.MILLISECONDS)) {
 				Map<Integer, IncomingKafkaRecordMetadata<String, Integer>> noPartition4 = specifyPartitionBean

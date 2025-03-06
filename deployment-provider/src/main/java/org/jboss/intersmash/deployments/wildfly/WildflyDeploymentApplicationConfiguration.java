@@ -17,10 +17,10 @@ package org.jboss.intersmash.deployments.wildfly;
 
 import org.apache.commons.lang3.StringUtils;
 
-
 /**
- * Defines the contract for WILDFLY application services that expose configuration which should be taken into account
- * by the WILDFLY s2i v2 process, i.e. the WildFly Maven plugin, feature packs and BOMs settings
+ * Defines the contract for WILDFLY application services that expose
+ * configuration which should be taken into account by the WILDFLY s2i v2
+ * process, i.e. the WildFly Maven plugin, feature packs and BOMs settings
  */
 public interface WildflyDeploymentApplicationConfiguration {
 
@@ -93,15 +93,16 @@ public interface WildflyDeploymentApplicationConfiguration {
 	/**
 	 * Server version property name for BOMs
 	 *
-	 * @return A string that represents the name of a property which could hold a given WILDFLY 8  deployment application
-	 * testable BOMs version
+	 * @return A string that represents the name of a property which could hold a
+	 *         given WILDFLY 8 deployment application testable BOMs version
 	 */
 	default String bomsEeServerVersionPropertyName() {
 		return WILDFLY_BOMS_EE_SERVER_VERSION;
 	}
 
 	/**
-	 * This must match the property name in the pom.xml file used to set the "wildfly-galleon-pack" feature pack GAV
+	 * This must match the property name in the pom.xml file used to set the
+	 * "wildfly-galleon-pack" feature pack GAV
 	 *
 	 * @return property name in the pom.xml file used to set the feature pack GAV
 	 */
@@ -110,7 +111,8 @@ public interface WildflyDeploymentApplicationConfiguration {
 	}
 
 	/**
-	 * This must match the property name in the pom.xml file used to set the "wildfly-ee-galleon-pack" feature pack GAV
+	 * This must match the property name in the pom.xml file used to set the
+	 * "wildfly-ee-galleon-pack" feature pack GAV
 	 *
 	 * @return property name in the pom.xml file used to set the feature pack GAV
 	 */
@@ -119,18 +121,22 @@ public interface WildflyDeploymentApplicationConfiguration {
 	}
 
 	/**
-	 * This must match the property name in the pom.xml file used to set the "wildfly-cloud-galleon-pack" feature pack GAV
+	 * This must match the property name in the pom.xml file used to set the
+	 * "wildfly-cloud-galleon-pack" feature pack GAV
 	 *
-	 * @return property name in the pom.xml file used to set the cloud feature pack GAV
+	 * @return property name in the pom.xml file used to set the cloud feature pack
+	 *         GAV
 	 */
 	default String cloudFeaturePackLocationPropertyName() {
 		return WILDFLY_CLOUD_FEATURE_PACK_LOCATION;
 	}
 
 	/**
-	 * This must match the property name in the pom.xml file used to set the "wildfly-datasources-galleon-pack" feature pack GAV
+	 * This must match the property name in the pom.xml file used to set the
+	 * "wildfly-datasources-galleon-pack" feature pack GAV
 	 *
-	 * @return property name in the pom.xml file used to set the datasources feature pack GAV
+	 * @return property name in the pom.xml file used to set the datasources feature
+	 *         pack GAV
 	 */
 	default String datasourcesFeaturePackLocationPropertyName() {
 		return WILDFLY_DATASOURCES_FEATURE_PACK_LOCATION;
@@ -140,41 +146,49 @@ public interface WildflyDeploymentApplicationConfiguration {
 	 * This must match the property name in the pom.xml file used to set the
 	 * "wildfly.keycloak-saml-adapter-feature-pack.version" feature pack version
 	 *
-	 * @return property name in the pom.xml file used to set the Keycloack SAML Adapter feature pack version
+	 * @return property name in the pom.xml file used to set the Keycloack SAML
+	 *         Adapter feature pack version
 	 */
 	default String keycloakSamlAdapterFeaturePackVersionPropertyName() {
 		return WILDFLY_KEYCLOAK_SAML_ADAPTER_FEATURE_PACK_VERSION;
 	}
 
 	/**
-	 * This must match the property name in the pom.xml file used to set the channel GroupId
+	 * This must match the property name in the pom.xml file used to set the channel
+	 * GroupId
 	 *
-	 * @return property name in the pom.xml file used to set the channel artifact groupId
+	 * @return property name in the pom.xml file used to set the channel artifact
+	 *         groupId
 	 */
 	default String eeChannelGroupIdPropertyName() {
 		return WILDFLY_EE_CHANNEL_GROUPID;
 	}
 
 	/**
-	 * This must match the property name in the pom.xml file used to set the channel ArtifactId
+	 * This must match the property name in the pom.xml file used to set the channel
+	 * ArtifactId
 	 *
-	 * @return property name in the pom.xml file used to set the channel artifact artifactId
+	 * @return property name in the pom.xml file used to set the channel artifact
+	 *         artifactId
 	 */
 	default String eeChannelArtifactIdPropertyName() {
 		return WILDFLY_EE_CHANNEL_ARTIFACTID;
 	}
 
 	/**
-	 * This must match the property name in the pom.xml file used to set the channel Version
+	 * This must match the property name in the pom.xml file used to set the channel
+	 * Version
 	 *
-	 * @return property name in the pom.xml file used to set the channel artifact version
+	 * @return property name in the pom.xml file used to set the channel artifact
+	 *         version
 	 */
 	default String eeChannelVersionPropertyName() {
 		return WILDFLY_EE_CHANNEL_VERSION;
 	}
 
 	/**
-	 * This must match the property name in the pom.xml file used to set the channel GAV
+	 * This must match the property name in the pom.xml file used to set the channel
+	 * GAV
 	 *
 	 * @return property name in the pom.xml file used to set the channel GAV
 	 */
@@ -183,73 +197,86 @@ public interface WildflyDeploymentApplicationConfiguration {
 	}
 
 	/**
-	 * This must match the property name in the pom.xml file used to set the "wildfly-maven-plugin" groupId
+	 * This must match the property name in the pom.xml file used to set the
+	 * "wildfly-maven-plugin" groupId
 	 *
-	 * @return property name in the pom.xml file used to set the "wildfly-maven-plugin" groupId
+	 * @return property name in the pom.xml file used to set the
+	 *         "wildfly-maven-plugin" groupId
 	 */
 	default String wildflyMavenPluginGroupIdPropertyName() {
 		return WILDFLY_MAVEN_PLUGIN_GROUPID;
 	}
 
 	/**
-	 * This must match the property name in the pom.xml file used to set the "wildfly-maven-plugin" artifactId
+	 * This must match the property name in the pom.xml file used to set the
+	 * "wildfly-maven-plugin" artifactId
 	 *
-	 * @return property name in the pom.xml file used to set the "wildfly-maven-plugin" artifactId
+	 * @return property name in the pom.xml file used to set the
+	 *         "wildfly-maven-plugin" artifactId
 	 */
 	default String wildflyMavenPluginArtifactIdPropertyName() {
 		return WILDFLY_MAVEN_PLUGIN_ARTIFACTID;
 	}
 
 	/**
-	 * This must match the property name in the pom.xml file used to set the "wildfly-maven-plugin" version
+	 * This must match the property name in the pom.xml file used to set the
+	 * "wildfly-maven-plugin" version
 	 *
-	 * @return property name in the pom.xml file used to set the "wildfly-maven-plugin" version
+	 * @return property name in the pom.xml file used to set the
+	 *         "wildfly-maven-plugin" version
 	 */
 	default String wildflyMavenPluginVersionPropertyName() {
 		return WILDFLY_MAVEN_PLUGIN_VERSION;
 	}
 
 	default String generateAdditionalMavenArgs() {
-		String result = "".concat(((!StringUtils.isBlank(this.eeFeaturePackLocation()) ? ""
-				: (" -D" + this.eeFeaturePackLocationPropertyName() + "="
-						+ this.eeFeaturePackLocation())))
-				+ ((!StringUtils.isBlank(this.featurePackLocation()) ? ""
-						: (" -D" + this.featurePackLocationPropertyName() + "="
-								+ this.featurePackLocation())))
-				+ ((!StringUtils.isBlank(this.cloudFeaturePackLocation()) ? ""
+		String result = "".concat(((!StringUtils.isBlank(this.eeFeaturePackLocation())
+				? ""
+				: (" -D" + this.eeFeaturePackLocationPropertyName() + "=" + this.eeFeaturePackLocation())))
+				+ ((!StringUtils.isBlank(this.featurePackLocation())
+						? ""
+						: (" -D" + this.featurePackLocationPropertyName() + "=" + this.featurePackLocation())))
+				+ ((!StringUtils.isBlank(this.cloudFeaturePackLocation())
+						? ""
 						: (" -D" + this.cloudFeaturePackLocationPropertyName() + "="
 								+ this.cloudFeaturePackLocation())))
-				+ ((!StringUtils.isBlank(this.datasourcesFeaturePackLocation()) ? ""
+				+ ((!StringUtils.isBlank(this.datasourcesFeaturePackLocation())
+						? ""
 						: (" -D" + this.datasourcesFeaturePackLocationPropertyName() + "="
 								+ this.datasourcesFeaturePackLocation())))
-				+ ((!StringUtils.isBlank(this.keycloakSamlAdapterFeaturePackVersion()) ? ""
+				+ ((!StringUtils.isBlank(this.keycloakSamlAdapterFeaturePackVersion())
+						? ""
 						: (" -D" + this.keycloakSamlAdapterFeaturePackVersionPropertyName() + "="
 								+ this.keycloakSamlAdapterFeaturePackVersion())))
-				+ ((!StringUtils.isBlank(this.eeChannelGroupId()) ? ""
-						: (" -D" + this.eeChannelGroupIdPropertyName() + "="
-								+ this.eeChannelGroupId())))
-				+ ((!StringUtils.isBlank(this.eeChannelArtifactId()) ? ""
-						: (" -D" + this.eeChannelArtifactIdPropertyName() + "="
-								+ this.eeChannelArtifactId())))
-				+ ((!StringUtils.isBlank(this.eeChannelVersion()) ? ""
-						: (" -D" + this.eeChannelVersionPropertyName() + "="
-								+ this.eeChannelVersion())))
-				+ ((!StringUtils.isBlank(this.wildflyMavenPluginGroupId()) ? ""
+				+ ((!StringUtils.isBlank(this.eeChannelGroupId())
+						? ""
+						: (" -D" + this.eeChannelGroupIdPropertyName() + "=" + this.eeChannelGroupId())))
+				+ ((!StringUtils.isBlank(this.eeChannelArtifactId())
+						? ""
+						: (" -D" + this.eeChannelArtifactIdPropertyName() + "=" + this.eeChannelArtifactId())))
+				+ ((!StringUtils.isBlank(this.eeChannelVersion())
+						? ""
+						: (" -D" + this.eeChannelVersionPropertyName() + "=" + this.eeChannelVersion())))
+				+ ((!StringUtils.isBlank(this.wildflyMavenPluginGroupId())
+						? ""
 						: (" -D" + this.wildflyMavenPluginGroupIdPropertyName() + "="
 								+ this.wildflyMavenPluginGroupId())))
-				+ ((!StringUtils.isBlank(this.wildflyMavenPluginArtifactId()) ? ""
+				+ ((!StringUtils.isBlank(this.wildflyMavenPluginArtifactId())
+						? ""
 						: (" -D" + this.wildflyMavenPluginArtifactIdPropertyName() + "="
 								+ this.wildflyMavenPluginArtifactId())))
-				+ ((!StringUtils.isBlank(this.wildflyMavenPluginVersion()) ? ""
+				+ ((!StringUtils.isBlank(this.wildflyMavenPluginVersion())
+						? ""
 						: (" -D" + this.wildflyMavenPluginVersionPropertyName() + "="
 								+ this.wildflyMavenPluginVersion())))
-				+ ((!StringUtils.isBlank(this.bomsEeServerVersion()) ? ""
-						: (" -D" + this.bomsEeServerVersionPropertyName() + "="
-								+ this.bomsEeServerVersion()))));
-		// a maven mirror for internal testable artifacts, i.e. which are not released yet, can be provided
-		result += result.concat(
-				(!StringUtils.isBlank(this.getMavenMirrorUrl()) ? ""
-						: " -Dmaven-mirror.url=" + this.getMavenMirrorUrl()));
+				+ ((!StringUtils.isBlank(this.bomsEeServerVersion())
+						? ""
+						: (" -D" + this.bomsEeServerVersionPropertyName() + "=" + this.bomsEeServerVersion()))));
+		// a maven mirror for internal testable artifacts, i.e. which are not released
+		// yet, can be provided
+		result += result.concat((!StringUtils.isBlank(this.getMavenMirrorUrl())
+				? ""
+				: " -Dmaven-mirror.url=" + this.getMavenMirrorUrl()));
 		return result;
 	}
 }

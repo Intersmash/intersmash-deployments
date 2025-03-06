@@ -25,7 +25,6 @@ package org.jboss.intersmash.deployments.wildfly.microprofile.reactive.messaging
 import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -33,15 +32,16 @@ import java.util.concurrent.CompletionStage;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import org.eclipse.microprofile.reactive.streams.operators.PublisherBuilder;
 import org.eclipse.microprofile.reactive.streams.operators.ReactiveStreams;
 
 /**
- * Taken from WildFly testsuite, see org.wildfly.test.integration.microprofile.reactive.messaging.kafka.tx.Bean.
+ * Taken from WildFly testsuite, see
+ * org.wildfly.test.integration.microprofile.reactive.messaging.kafka.tx.Bean.
  * <p/>
+ * 
  * @author <a href="mailto:kabir.khan@jboss.com">Kabir Khan</a>
  */
 @ApplicationScoped
@@ -65,15 +65,17 @@ public class Bean {
 
 	@Outgoing("tx-to-kafka")
 	public PublisherBuilder<String> source() {
-		// We need to set the following in microprofile-config.properties for this approach to work
-		//  mp.messaging.incoming.from-kafka.auto.offset.reset=earliest
+		// We need to set the following in microprofile-config.properties for this
+		// approach to work
+		// mp.messaging.incoming.from-kafka.auto.offset.reset=earliest
 		return ReactiveStreams.of("hello", "reactive", "messaging");
 	}
 
 	@Incoming("tx-from-kafka")
 	@Outgoing("sink")
 	public CompletionStage<String> store(String payload) {
-		// Make sure it is on a separate thread. If Context Propagation was enabled, I'd use a ManagedExecutor
+		// Make sure it is on a separate thread. If Context Propagation was enabled, I'd
+		// use a ManagedExecutor
 		return CompletableFuture.supplyAsync(() -> {
 			if (payload.equals("reactive")) {
 				// Add a sleep here to make sure the calling method has returned

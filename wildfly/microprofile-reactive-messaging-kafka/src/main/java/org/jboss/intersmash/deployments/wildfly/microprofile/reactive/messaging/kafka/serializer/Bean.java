@@ -22,32 +22,33 @@
 
 package org.jboss.intersmash.deployments.wildfly.microprofile.reactive.messaging.kafka.serializer;
 
+import io.smallrye.reactive.messaging.kafka.api.KafkaMetadataUtil;
 import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.ApplicationScoped;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Message;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import org.eclipse.microprofile.reactive.streams.operators.PublisherBuilder;
 import org.eclipse.microprofile.reactive.streams.operators.ReactiveStreams;
 
-import io.smallrye.reactive.messaging.kafka.api.KafkaMetadataUtil;
-
 /**
- * Taken from WildFly testsuite, see org.wildfly.test.integration.microprofile.reactive.messaging.kafka.serializer.Bean.
+ * Taken from WildFly testsuite, see
+ * org.wildfly.test.integration.microprofile.reactive.messaging.kafka.serializer.Bean.
  * <p/>
- * This generates some data and sends them to an AMQ-Stream instance to 'testing' topic via 'ssl-serializer-to-kafka' outgoing
- * interface. At the same time it reads from AMQ-Streams instance from 'testing' topic via 'ssl-serializer-from-kafka' incoming
- * interface (see 'microprofile-config.properties' for more context).
+ * This generates some data and sends them to an AMQ-Stream instance to
+ * 'testing' topic via 'ssl-serializer-to-kafka' outgoing interface. At the same
+ * time it reads from AMQ-Streams instance from 'testing' topic via
+ * 'ssl-serializer-from-kafka' incoming interface (see
+ * 'microprofile-config.properties' for more context).
  *
- * This test also serves as a test for the SSL connection with Kafka/AMQ Streams.
+ * This test also serves as a test for the SSL connection with Kafka/AMQ
+ * Streams.
  *
  * @author <a href="mailto:kabir.khan@jboss.com">Kabir Khan</a>
  */
@@ -70,19 +71,13 @@ public class Bean {
 
 	@Outgoing("sslto")
 	public PublisherBuilder<Person> source() {
-		// We need to set the following in microprofile-config.properties for this approach to work
+		// We need to set the following in microprofile-config.properties for this
+		// approach to work
 		// mp.messaging.incoming.from-kafka.auto.offset.reset=earliest
 		System.out.println("Sending to sslto");
-		return ReactiveStreams.of(new Person("Kabir", 101),
-				new Person("Bob", 18),
-				new Person("Roger", 21),
-				new Person("Franta", 11),
-				new Person("Pepa", 12),
-				new Person("Karel", 13),
-				new Person("Jaromir", 14),
-				new Person("Vita", 15),
-				new Person("Suzie", 16),
-				new Person("Paja", 17));
+		return ReactiveStreams.of(new Person("Kabir", 101), new Person("Bob", 18), new Person("Roger", 21),
+				new Person("Franta", 11), new Person("Pepa", 12), new Person("Karel", 13), new Person("Jaromir", 14),
+				new Person("Vita", 15), new Person("Suzie", 16), new Person("Paja", 17));
 	}
 
 	@Incoming("sslfrom")

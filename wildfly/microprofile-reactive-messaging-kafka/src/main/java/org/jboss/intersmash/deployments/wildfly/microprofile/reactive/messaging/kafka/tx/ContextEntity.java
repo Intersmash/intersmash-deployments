@@ -27,8 +27,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 /**
- * Taken from WildFly testsuite, see org.wildfly.test.integration.microprofile.reactive.messaging.kafka.tx.ContextEntity.
+ * Taken from WildFly testsuite, see
+ * org.wildfly.test.integration.microprofile.reactive.messaging.kafka.tx.ContextEntity.
  * <p/>
+ * 
  * @author <a href="mailto:kabir.khan@jboss.com">Kabir Khan</a>
  */
 @Entity
