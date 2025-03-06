@@ -1,0 +1,6 @@
+/.idea/
+/deployment-provider.iml
+/target/
+/deployment-provider/target/
+/wildfly/target/
+/wildfly/microprofile-reactive-messaging-kafka/target/

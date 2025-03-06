@@ -1,0 +1,5 @@
+/home/fburzigo/Projects/git/Intersmash/intersmash-deployments/deployment-provider/target/generated-sources/java-templates/org/jboss/intersmash/deployments/DeploymentProperties.java
+/home/fburzigo/Projects/git/Intersmash/intersmash-deployments/deployment-provider/src/main/java/org/jboss/intersmash/deployments/DeploymentsProvider.java
+/home/fburzigo/Projects/git/Intersmash/intersmash-deployments/deployment-provider/src/main/java/org/jboss/intersmash/deployments/maven/MavenSettingsUtil.java
+/home/fburzigo/Projects/git/Intersmash/intersmash-deployments/deployment-provider/src/main/java/org/jboss/intersmash/deployments/wildfly/WildflyDeploymentApplicationConfiguration.java
+/home/fburzigo/Projects/git/Intersmash/intersmash-deployments/deployment-provider/src/main/java/org/jboss/intersmash/deployments/maven/ArtifactProvider.java
