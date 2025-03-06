@@ -1,0 +1,6 @@
+org/jboss/intersmash/deployments/wildfly/WildflyDeploymentApplicationConfiguration.class
+org/jboss/intersmash/deployments/maven/MavenSettingsUtil.class
+org/jboss/intersmash/deployments/maven/ArtifactProvider$1.class
+org/jboss/intersmash/deployments/DeploymentProperties.class
+org/jboss/intersmash/deployments/maven/ArtifactProvider.class
+org/jboss/intersmash/deployments/DeploymentsProvider.class

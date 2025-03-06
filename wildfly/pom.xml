@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.jboss.intersmash</groupId>
+        <groupId>org.jboss.intersmash.deployments</groupId>
         <artifactId>intersmash-deployments</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
@@ -29,7 +29,7 @@
         <!-- Default WildFly `microprofile` BOM version is set here and can be overridden for pulling the right BOM -->
         <bom.wildfly-microprofile.groupId>org.wildfly.bom</bom.wildfly-microprofile.groupId>
         <bom.wildfly-microprofile.artifactId>wildfly-expansion</bom.wildfly-microprofile.artifactId>
-        <bom.wildfly-microprofile.version>${version.wildfly-server}</bom.wildfly-microprofile.version>
+        <bom.wildfly-microprofile.version>${wildfly.version}</bom.wildfly-microprofile.version>
         <!-- Default WildFly/EAP 8.z Feature Pack coordinates -->
         <wildfly.feature-pack.location>org.wildfly:wildfly-galleon-pack:${wildfly.version}</wildfly.feature-pack.location>
         <!-- Default WildFly/EAP 8.z Feature Pack coordinates -->
